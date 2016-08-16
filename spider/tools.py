@@ -130,6 +130,20 @@ def saveImgs(images,name):
         fileName = name + "/" + str(number) + "." + fTail
         saveImg(imageURL,fileName)
         number += 1
+        
+#保存多张写真图片
+def saveImgsByNum(images,name,number):
+    print u"发现",name,u"共有",len(images),u"张照片"
+    mkdir(name)
+    for imageURL in images:
+        splitPath = imageURL.split('.')
+        fTail = splitPath.pop()
+        if len(fTail) > 3:
+            fTail = "jpg"
+        fileName = name + "/" + str(number) + "." + fTail
+        saveImg(imageURL,fileName)
+        number += 1
+    return number+1        
 
 #传入图片地址，文件名，保存单张图片
 def saveImg(imageURL,fileName):
@@ -137,7 +151,7 @@ def saveImg(imageURL,fileName):
     data = u.read()
     f = open(fileName, 'wb')
     f.write(data)
-    print u"正在悄悄保存她的一张图片为",fileName
+    print u"正在悄悄保存一张图片为",fileName
     f.flush()
     f.close()
 
