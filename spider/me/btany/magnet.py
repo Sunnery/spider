@@ -15,31 +15,23 @@ def parse_body(html):
     doc = jq(html)('.x-item')
     for item in doc:
         item = jq(item)
-        name = tools.parse_words(item, '.title')#获取名字
-        magnet = jq(item('.title')[1]).attr('href')#获取imgUrl
-        movie = {
-            '标题': name,
-            '磁力链接': magnet,
-        }
-        movies.append(movie)
+        name = tools.parse_words(item, '.title')
+        magnet = jq(item('.title')[1]).attr('href')
+        print '名称          ：',name
+        print '磁力链接: ',magnet
+        print '--------------------------------------------------------------'
     return movies
 
 def get_bt():
-    key = "国产"
-    bts = []
-    url = ''.join(['http://www.nimasou.net/l/',key,'-hot-desc-1'])
-    html = tools.getHTML(url)
-    #print html
-    bts = parse_body(html)
+    key = "a"
+    for i in range(1,10+1):
+        url = ''.join(['http://www.nimasou.net/l/',key,'-hot-desc-',str(i)])
+        html = tools.getHTML(url)
+        bts = parse_body(html)
     return bts
 
 if __name__ == '__main__':
     bts = get_bt()
-    for bt in bts:
-        for(k,v) in bt.items():
-            print k, v
-        
-        print "--------------------------"
         
 
 
