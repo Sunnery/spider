@@ -2,7 +2,7 @@
 '''
 Created on 2016-8-16
 
-@author: 研发
+@author: 研发 papapa
 '''
 from pyquery import PyQuery as jq
 import sys
@@ -20,7 +20,7 @@ def parse_body(html,pageName,number):
 
 def get_image():
     isNext = 0
-    url = 'http://qq.yh31.com/zjbq/0551964.html'
+    url = 'http://qq.yh31.com/zjbq/0551964.html' 
     pageName = []
     pageName.append("jinguanzhang")
     number = 1
